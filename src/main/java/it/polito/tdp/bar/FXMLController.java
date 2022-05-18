@@ -3,6 +3,7 @@ package it.polito.tdp.bar;
 import java.net.URL;
 import java.util.ResourceBundle;
 import it.polito.tdp.bar.model.Model;
+import it.polito.tdp.bar.model.Statistiche;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -22,6 +23,11 @@ public class FXMLController {
 
 	@FXML
 	void handleSimula(ActionEvent event) {
+		txtResult.clear();
+		Statistiche statistiche = this.model.simula();
+		txtResult.appendText(String.format("%d clienti totali\n", statistiche.getClientiTot()));
+		txtResult.appendText(String.format("%d clienti soddisfatti\n", statistiche.getClientiSoddisfatti()));
+		txtResult.appendText(String.format("%d clienti insoddisfatti\n", statistiche.getClientiInsoddisfatti()));
 
 	}
 
